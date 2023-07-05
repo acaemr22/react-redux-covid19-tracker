@@ -1,0 +1,22 @@
+.head {
+  font-family: "Tourney", cursive;
+  width: 100%;
+  background-image: url(/Covid-19.png);
+  background-size: cover;
+  background-position: center;
+  background-clip: text;
+}
+
+.resize {
+  height: 100px;
+}
+
+@media screen and (max-width: 640px) {
+  .head {
+    font-family: "Tourney", cursive;
+    background-image: url(/Covid-19.png);
+    background-size: cover;
+    background-position: center;
+    background-clip: text;
+  }
+}
