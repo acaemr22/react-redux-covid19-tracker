@@ -19,7 +19,7 @@ function App() {
     dispatch(fetchData(type));
   }, [type]);
 
-  if (status === "failed") {
+  if (status === "failed" && type !== "Globe") {
     return (
       <main className="py-64">
         <Error message={error} />
