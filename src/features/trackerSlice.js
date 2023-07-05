@@ -16,7 +16,7 @@ export const fetchData = createAsyncThunk(
         }
       );
       console.log(`https://covid-api.com/api/reports?region_name=${region}`);
-      return res.data.data[0];
+      return res.data.data[0] ?? res.data.data;
     } else {
       res = await axios("https://covid-api.com/api/reports/total", {
         headers: {

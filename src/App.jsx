@@ -46,13 +46,13 @@ function App() {
       <section>
         {status === "pending" ? (
           <Loading />
-        ) : (
+        ) : JSON.stringify(data) !== JSON.stringify([]) ? (
           <div className="w-full px-5 sm:px-20 md:px-30  py-10 grid md:grid-cols-2 xl:grid-cols-4 grid-cols-1 gap-10">
             <div className="rounded-md overflow-clip">
               <div className="px-2 py-6 text-center text-lg sm:text-xl font-semibold bg-blue-300/60 flex flex-col gap-y-1 sm:gap-y-2">
                 <h3>Infected</h3>
                 <h3 className="font-bold text-xl sm:text-2xl">
-                  {data.confirmed?.toLocaleString()}
+                  {data.confirmed.toLocaleString()}
                 </h3>
                 <h3>Last updated at:</h3>
                 <h3 className="text-gray-500">
@@ -65,7 +65,7 @@ function App() {
               <div className="px-2 py-6 text-center text-lg sm:text-xl font-semibold bg-green-300/60 flex flex-col gap-y-1 sm:gap-y-2">
                 <h3>Recovered</h3>
                 <h3 className="font-bold text-xl sm:text-2xl">
-                  {data.recovered?.toLocaleString()}
+                  {data.recovered.toLocaleString()}
                 </h3>
                 <h3>Last updated at:</h3>
                 <h3 className="text-gray-500">
@@ -78,7 +78,7 @@ function App() {
               <div className="px-2 py-6 text-center text-lg sm:text-xl font-semibold bg-red-300/60 flex flex-col gap-y-1 sm:gap-y-2">
                 <h3>Deaths</h3>
                 <h3 className="font-bold text-xl sm:text-2xl">
-                  {data.deaths?.toLocaleString()}
+                  {data.deaths.toLocaleString()}
                 </h3>
                 <h3>Last updated at:</h3>
                 <h3 className="text-gray-500">
@@ -91,7 +91,7 @@ function App() {
               <div className="px-2 py-6 text-center text-lg sm:text-xl font-semibold bg-yellow-300/60 flex flex-col gap-y-1 sm:gap-y-2">
                 <h3>Active</h3>
                 <h3 className="font-bold text-xl sm:text-2xl">
-                  {data.active?.toLocaleString()}
+                  {data.active.toLocaleString()}
                 </h3>
                 <h3>Last updated at:</h3>
                 <h3 className="text-gray-500">
@@ -101,40 +101,46 @@ function App() {
               <div className="bg-yellow-500 h-3"></div>
             </div>
           </div>
+        ) : (
+          <div className="text-center py-10 font-semibold">
+            There aren't any datas for {type}
+          </div>
         )}
         <div className="flex items-center justify-center">
           <Select countries={countries} state={[type, setType]} />
         </div>
       </section>
-      <section className="flex justify-center items-center py-10 md:px-36">
+      <section className="flex justify-center items-center py-10 px-3 md:px-36">
         {status === "pending" ? (
           <Loading />
         ) : (
-          <BarChart
-            className="w-full"
-            chartData={{
-              labels: ["Infected", "Recovered", "Deaths", "Active"],
-              datasets: [
-                {
-                  label: `Current State in the ${
-                    type === "Globe" ? "World" : type
-                  }`,
-                  data: [
-                    data.confirmed,
-                    data.deaths,
-                    data.recovered,
-                    data.active,
-                  ],
-                  backgroundColor: [
-                    "rgb(147 197 253 / 0.6)",
-                    "rgb(134 239 172 / 0.6)",
-                    " rgb(252 165 165 / 0.6)",
-                    "rgb(253 224 71 / 0.6)",
-                  ],
-                },
-              ],
-            }}
-          />
+          JSON.stringify(data) !== JSON.stringify([]) && (
+            <BarChart
+              className="w-full"
+              chartData={{
+                labels: ["Infected", "Recovered", "Deaths", "Active"],
+                datasets: [
+                  {
+                    label: `Current State in the ${
+                      type === "Globe" ? "World" : type
+                    }`,
+                    data: [
+                      data.confirmed,
+                      data.deaths,
+                      data.recovered,
+                      data.active,
+                    ],
+                    backgroundColor: [
+                      "rgb(147 197 253 / 0.6)",
+                      "rgb(134 239 172 / 0.6)",
+                      " rgb(252 165 165 / 0.6)",
+                      "rgb(253 224 71 / 0.6)",
+                    ],
+                  },
+                ],
+              }}
+            />
+          )
         )}
       </section>
       <footer className="flex-col flex items-center justify-center gap-y-4">
@@ -167,7 +173,7 @@ function App() {
               width="16"
               height="16"
               fill="currentColor"
-              class="bi bi-code-slash"
+              className="bi bi-code-slash"
               viewBox="0 0 16 16"
             >
               <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z" />
