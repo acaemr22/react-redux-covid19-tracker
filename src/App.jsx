@@ -19,7 +19,7 @@ function App() {
     dispatch(fetchData(type));
   }, [type]);
 
-  if (status === "failed") {
+  if (status === "failed" && type !== "Global") {
     return <Error message={error} />;
   }
 
