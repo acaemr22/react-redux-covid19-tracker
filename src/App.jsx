@@ -47,11 +47,11 @@ function App() {
         {status === "pending" ? (
           <Loading />
         ) : (
-          <div className="w-full px-5 md:px-36  py-10 grid md:grid-cols-2 xl:grid-cols-4 grid-cols-1 gap-10">
+          <div className="w-full px-5 sm:px-20 md:px-30  py-10 grid md:grid-cols-2 xl:grid-cols-4 grid-cols-1 gap-10">
             <div className="rounded-md overflow-clip">
-              <div className="px-2 py-6 text-center text-xl font-semibold bg-blue-300/60 flex flex-col gap-y-2">
+              <div className="px-2 py-6 text-center text-lg sm:text-xl font-semibold bg-blue-300/60 flex flex-col gap-y-1 sm:gap-y-2">
                 <h3>Infected</h3>
-                <h3 className="font-bold text-2xl">
+                <h3 className="font-bold text-xl sm:text-2xl">
                   {data.confirmed?.toLocaleString()}
                 </h3>
                 <h3>Last updated at:</h3>
@@ -62,9 +62,9 @@ function App() {
               <div className="bg-blue-500 h-3"></div>
             </div>
             <div className="rounded-md overflow-clip">
-              <div className="px-2 py-6 text-center text-xl font-semibold bg-green-300/60 flex flex-col gap-y-2">
+              <div className="px-2 py-6 text-center text-lg sm:text-xl font-semibold bg-green-300/60 flex flex-col gap-y-1 sm:gap-y-2">
                 <h3>Recovered</h3>
-                <h3 className="font-bold text-2xl">
+                <h3 className="font-bold text-xl sm:text-2xl">
                   {data.recovered?.toLocaleString()}
                 </h3>
                 <h3>Last updated at:</h3>
@@ -75,9 +75,9 @@ function App() {
               <div className="bg-green-500 h-3"></div>
             </div>
             <div className="rounded-md overflow-clip">
-              <div className="px-2 py-6 text-center text-xl font-semibold bg-red-300/60 flex flex-col gap-y-2">
+              <div className="px-2 py-6 text-center text-lg sm:text-xl font-semibold bg-red-300/60 flex flex-col gap-y-1 sm:gap-y-2">
                 <h3>Deaths</h3>
-                <h3 className="font-bold text-2xl">
+                <h3 className="font-bold text-xl sm:text-2xl">
                   {data.deaths?.toLocaleString()}
                 </h3>
                 <h3>Last updated at:</h3>
@@ -88,9 +88,9 @@ function App() {
               <div className="bg-red-500 h-3"></div>
             </div>
             <div className="rounded-md overflow-clip">
-              <div className="px-2 py-6 text-center text-xl font-semibold bg-yellow-300/60 flex flex-col gap-y-2">
+              <div className="px-2 py-6 text-center text-lg sm:text-xl font-semibold bg-yellow-300/60 flex flex-col gap-y-1 sm:gap-y-2">
                 <h3>Active</h3>
-                <h3 className="font-bold text-2xl">
+                <h3 className="font-bold text-xl sm:text-2xl">
                   {data.active?.toLocaleString()}
                 </h3>
                 <h3>Last updated at:</h3>
