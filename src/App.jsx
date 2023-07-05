@@ -19,8 +19,15 @@ function App() {
     dispatch(fetchData(type));
   }, [type]);
 
-  if (status === "failed" && type !== "Globe") {
-    return <Error message={error} />;
+  if (status === "failed") {
+    return (
+      <main className="py-64">
+        <Error message={error} />
+        <div className="flex items-center justify-center h-full">
+          <Select countries={countries} state={[type, setType]} />
+        </div>
+      </main>
+    );
   }
 
   return (
